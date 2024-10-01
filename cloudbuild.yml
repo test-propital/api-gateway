@@ -4,7 +4,7 @@ steps:
       [
         "build",
         "-t",
-        " southamerica-east1-docker.pkg.dev/test-propital/image-register/api-gateway",
+        "southamerica-east1-docker.pkg.dev/test-propital/image-register/api-gateway",
         "-f",
         "dockerfile.prod",
         "--platform=linux/amd64",
@@ -14,7 +14,7 @@ steps:
     args:
       [
         "push",
-        " southamerica-east1-docker.pkg.dev/test-propital/image-register/api-gateway",
+        "southamerica-east1-docker.pkg.dev/test-propital/image-register/api-gateway",
       ]
 options:
   logging: 'CLOUD_LOGGING_ONLY'
