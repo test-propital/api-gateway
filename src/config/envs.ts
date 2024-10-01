@@ -28,6 +28,7 @@ const envSchema = joi
 const { error, value } = envSchema.validate({
   ...process.env,
   NAST_SERVERS: process.env.NAST_SERVERS?.split(','),
+  REDIS_CLIENT: process.env.NAST_SERVERS?.split(','),
 });
 
 if (error) {
