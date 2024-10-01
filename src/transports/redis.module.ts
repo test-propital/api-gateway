@@ -9,6 +9,7 @@ import { envs, REDIS_CLIENT } from 'src/config';
     {
       provide: REDIS_CLIENT, // Proveedor de Redis
       useFactory: async () => {
+        console.log(  envs.redis_url[0])
         const client = createClient({ url: envs.redis_url[0] });
         await client.connect(); // Conectar el cliente Redis
         return client;
