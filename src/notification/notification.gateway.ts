@@ -7,8 +7,9 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { NotificationService } from './notification.service'; // Ajusta la ruta
+import { envs } from 'src/config';
 
-@WebSocketGateway(3001, {
+@WebSocketGateway(envs.socket_port, {
   namespace: 'notifications',
   cors: {
     origin: '*', // Cambia según el origen de tu frontend
