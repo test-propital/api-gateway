@@ -9,10 +9,8 @@ async function bootstrap() {
   const logger = new Logger('Main-api-Gateway');
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: '*', // Ajusta según tu configuración
+    origin: '*', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    // allowedHeaders: 'Content-Type, Authorization',
-    //credentials: true,
   });
 
   app.useGlobalPipes(

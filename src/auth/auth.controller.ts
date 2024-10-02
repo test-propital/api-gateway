@@ -39,13 +39,6 @@ export class AuthController {
   @UseGuards(AuthGuard)
   @Get('verify')
   verifyUser(@User() user: CurrenUser, @Token() token: string) {
-    // const user = req['user'];
-    // const token = req['token'];
-    /*return this.nastClient.send('auth.verify.user', {}).pipe(
-      catchError((err) => {
-        throw new RpcException(err);
-      }),
-    );*/
     return {
       user,
       token,

@@ -3,20 +3,20 @@ import { createClient } from 'redis';
 import { RedisService } from './redis.service';
 import { envs, REDIS_CLIENT } from 'src/config';
 
-@Global() // Hacer el módulo global para que esté disponible en toda la aplicación
+@Global()
 @Module({
   providers: [
     {
-      provide: REDIS_CLIENT, // Proveedor de Redis
+      provide: REDIS_CLIENT,
       useFactory: async () => {
         console.log(  envs.redis_url[0])
         const client = createClient({ url: envs.redis_url[0] });
-        await client.connect(); // Conectar el cliente Redis
+        await client.connect();
         return client;
       },
     },
     RedisService,
   ],
-  exports: [REDIS_CLIENT, RedisService], // Exportar el cliente y el servicio
+  exports: [REDIS_CLIENT, RedisService],
 })
 export class RedisModule {}

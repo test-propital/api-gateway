@@ -6,13 +6,13 @@ import {
   SubscribeMessage,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
-import { NotificationService } from './notification.service'; // Ajusta la ruta
+import { NotificationService } from './notification.service';
 import { envs } from 'src/config';
 
 @WebSocketGateway(envs.socket_port, {
   namespace: 'notifications',
   cors: {
-    origin: '*', // Cambia según el origen de tu frontend
+    origin: '*',
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -52,43 +52,4 @@ export class NotificationGateway
       this.server,
     );
   }
-  // async handleConnection(client: Socket) {
-  //   const userId = client.handshake.query.userId;
-  //   console.log(userId);
-  //   const userIdString = Array.isArray(userId) ? userId[0] : userId;
-
-  //   await this.notificationService.registerClient(userIdString, client.id);
-  //   console.log(
-  //     `Cliente conectado: ${client.id} para el usuario: ${userIdString}`,
-  //   );
-  // }
-
-  // async handleDisconnect(client: Socket) {
-  //   const userId = client.handshake.query.userId;
-
-  //   // Asegúrate de que userId es un string
-  //   const userIdString = Array.isArray(userId) ? userId[0] : userId;
-
-  //   await this.notificationService.unregisterClient(userIdString);
-  //   console.log(
-  //     `Cliente desconectado: ${client.id} para el usuario: ${userIdString}`,
-  //   );
-  // }
-
-  // @SubscribeMessage('newNotification')
-  // handleNotification(client: Socket, payload: any): string {
-  //   return `Notificación recibida para cliente ${client.id}: ${payload.message}`;
-  // }
-
-  // async handleNotificationCreated(notification: any) {
-  //   await this.notificationService.sendNotification(notification, this.server);
-  // }
-
-  // async sendNotificationToUser(userId: string, message: any) {
-  //   await this.notificationService.sendNotificationToUser(
-  //     userId,
-  //     message,
-  //     this.server,
-  //   );
-  // }
 }

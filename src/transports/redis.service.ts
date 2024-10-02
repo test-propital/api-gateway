@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { RedisClientType } from 'redis';
+import { REDIS_CLIENT } from 'src/config';
 
 @Injectable()
 export class RedisService {
   constructor(
-    @Inject('REDIS_CLIENT') private readonly redisClient: RedisClientType,
+    @Inject(REDIS_CLIENT) private readonly redisClient: RedisClientType,
   ) {}
 
   async set(key: string, value: string) {
@@ -19,5 +20,4 @@ export class RedisService {
     await this.redisClient.del(key);
   }
 
-  // Agrega más métodos según sea necesario...
 }
